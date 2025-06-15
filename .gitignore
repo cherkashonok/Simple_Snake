@@ -57,7 +57,7 @@ priconf.xml
 resources.map.txt
 resources.pri
 msi-install-*.txt
-.my_tmp/
+.my_tmp/*
 kernellogs.txt
 FormatSource.ps1
 msixinstaller/x64
