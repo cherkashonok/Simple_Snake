@@ -57,7 +57,7 @@ priconf.xml
 resources.map.txt
 resources.pri
 msi-install-*.txt
-.my_tmp/*
+tmp_my
 kernellogs.txt
 FormatSource.ps1
 msixinstaller/x64
@@ -66,3 +66,4 @@ package/x64
 tools/clang-format.exe
 /linux-crashes
 doc/site/
+*.exe
