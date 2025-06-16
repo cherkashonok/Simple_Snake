@@ -6,8 +6,8 @@ cmake ^
     -S . ^
     -B tmp ^
     -DCMAKE_BUILD_TYPE=Debug ^
-    -DCMAKE_CXX_COMPILER:PATH="D:\LLVM\bin\clang++.exe" ^
-    -DCMAKE_LINKER:PATH="D:\LLVM\bin\lld-link.exe" ^
+    @REM -DCMAKE_CXX_COMPILER:PATH="D:\LLVM\bin\clang++.exe" ^
+    @REM -DCMAKE_LINKER:PATH="D:\LLVM\bin\lld-link.exe" ^
     -G Ninja 
 
 cd tmp
