@@ -1,4 +1,5 @@
-﻿#! base
+﻿set(CMAKE_CXX_COMPLIER "g++")
+#! base
 cmake_minimum_required(VERSION "3.10")
 project("game_for_school(SFML)"
 			VERSION "1.2.0"
@@ -6,7 +7,6 @@ project("game_for_school(SFML)"
 		)
 set(CMAKE_CXX_STANDARD "17")
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_COMPLIER clang-cl)
 include(FetchContent)
 
 
