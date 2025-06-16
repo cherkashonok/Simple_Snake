@@ -6,6 +6,7 @@ cmake ^
     -S . ^
     -B tmp ^
     -DCMAKE_BUILD_TYPE=Debug ^
+    -DCMAKE_CXX_COMPILER=g++^
     -G Ninja 
 
 cd tmp
