@@ -1,12 +1,12 @@
 ﻿#! base
-cmake_minimum_required(VERSION "3.8")
+cmake_minimum_required(VERSION "3.10")
 project("game_for_school(SFML)"
 			VERSION "1.2.0"
     		LANGUAGES "CXX"
 		)
 set(CMAKE_CXX_STANDARD "17")
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-# set(CMAKE_CXX_COMPLIER "clang-cl")
+set(CMAKE_CXX_COMPLIER clang-cl)
 include(FetchContent)
 
 
