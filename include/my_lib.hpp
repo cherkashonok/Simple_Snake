@@ -6,7 +6,7 @@
 #define WINDOW_X_SIZE 800
 #define WINDOW_Y_SIZE 600
 
-#define START_INCREASE_SNAKE
+// #define START_INCREASE_SNAKE
 // #define EXPLOSIVE
 
 #include "SFML/Graphics/RectangleShape.hpp"

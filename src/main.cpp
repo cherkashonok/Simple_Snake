@@ -3,8 +3,8 @@
 
 #include "SFML/Window/Event.hpp"
 #include "SFML/Graphics.hpp"
-// #include "imgui.h"
-// #include "imgui-SFML.h"
+// #include "TGUI/TGUI.hpp"
+// #include "TGUI/Backend/SFML-Graphics.hpp"
 
 #include "Snake.hpp"
 #include "Apple.hpp"
@@ -20,12 +20,14 @@ int main()
     sf::RenderWindow window(sf::VideoMode(WINDOW_X_SIZE, WINDOW_Y_SIZE), "Simple Snake");
     uint32_t fps = 4;
     window.setFramerateLimit(fps);
-    // ImGui::SFML::Init(window);
+
+    // tgui::Gui gui{window};
 
     Counter counter;
     Snake snake{false};
     Apple apple{snake};
 
+    // for debug ?
     #ifdef START_INCREASE_SNAKE
         for(int r=1; r<=10; r++)
             ++snake;
@@ -37,8 +39,6 @@ int main()
         sf::Event event;
         while (window.pollEvent(event)) 
         {
-            // ImGui::SFML::ProcessEvent(window, event);
-
             if (event.type == sf::Event::Closed)
                 window.close();
             if (event.type == sf::Event::KeyPressed) 
@@ -53,12 +53,10 @@ int main()
                     snake.down();
             }
         }
-        // ImGui::SFML::Update(window, delta.restart());
 
         window.clear(sf::Color::Black);
 
-        // try
-        // {
+
         if(snake.is_alive()) 
         {
             if (apple.check_snake_in_apple())
@@ -84,22 +82,16 @@ int main()
 
             window.draw(text);
         }
-        // }
-        // catch(const std::exception& e)
-        // {
-        //     std::cerr << e.what() << '\n';
-        // }
+
 
         snake.draw(window);
         window.draw(counter.get_obj());
         window.draw(apple.get_obj());
 
         window.display();
-        // ImGui::SFML::Render(window);
 
         // snake.log_snake();
     }
-    // ImGui::SFML::Shutdown();
 
     return 0;
 }
