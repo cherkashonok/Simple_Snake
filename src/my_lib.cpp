@@ -69,7 +69,7 @@ void RectOsnova::set_move_status(move_status external_move_status)
 sf::Font load_font() 
 {
     sf::Font font;
-    if (!font.loadFromFile("font.ttf"))
+    if (!font.loadFromFile("my_font.ttf"))
     {
         printf("font is not loaded\n");
         system("pwd");

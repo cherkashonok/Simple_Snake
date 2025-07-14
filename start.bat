@@ -6,12 +6,11 @@ cmake ^
     -S . ^
     -B tmp ^
     -DCMAKE_BUILD_TYPE=Debug ^
-    -DCMAKE_CXX_COMPILER:PATH="D:\LLVM\bin\clang++.exe" ^
-    -DCMAKE_LINKER:PATH="D:\LLVM\bin\lld-link.exe" ^
+    -DCMAKE_CXX_COMPILER=g++ ^
     -G Ninja 
 
 cd tmp
 ninja -j2
 
-move ./main.exe ..
+move ./main.exe ../snake.exe
 cd ..
