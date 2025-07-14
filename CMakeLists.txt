@@ -1,5 +1,5 @@
 ﻿#! base
-cmake_minimum_required(VERSION "3.10")
+cmake_minimum_required(VERSION "${CMAKE_MINIMUM_REQUIRED_VERSION}")
 project("game_for_school(SFML)"
 			VERSION "1.2.0"
     		LANGUAGES "CXX"
@@ -24,24 +24,24 @@ FetchContent_Declare(SFML
 FetchContent_MakeAvailable(SFML)
 
 # imgui
-set(imgui_TAG "v1.91.0")
+# set(imgui_TAG "v1.91.0")
 
-FetchContent_Declare(imgui
-					GIT_REPOSITORY "https://github.com/ocornut/imgui.git"
-					GIT_TAG "${imgui_TAG}"
-				)
-FetchContent_MakeAvailable(imgui)
+# FetchContent_Declare(imgui
+# 					GIT_REPOSITORY "https://github.com/ocornut/imgui.git"
+# 					GIT_TAG "${imgui_TAG}"
+# 				)
+# FetchContent_MakeAvailable(imgui)
 
 # imgui-sfml
-set(imgui-sfml_TAG "v2.6")
-set(IMGUI_DIR ${imgui_SOURCE_DIR})
-option(IMGUI_SFML_FIND_SFML "Use find_package to find SFML" OFF)
+# set(imgui-sfml_TAG "v2.6")
+# set(IMGUI_DIR ${imgui_SOURCE_DIR})
+# option(IMGUI_SFML_FIND_SFML "Use find_package to find SFML" OFF)
 
-FetchContent_Declare(imgui-sfml
-					GIT_REPOSITORY "https://github.com/SFML/imgui-sfml.git"
-					GIT_TAG "${imgui-sfml_TAG}"
-				)
-FetchContent_MakeAvailable(imgui-sfml)
+# FetchContent_Declare(imgui-sfml
+# 					GIT_REPOSITORY "https://github.com/SFML/imgui-sfml.git"
+# 					GIT_TAG "${imgui-sfml_TAG}"
+# 				)
+# FetchContent_MakeAvailable(imgui-sfml)
 
 
 
@@ -57,8 +57,8 @@ target_link_libraries(main
 						sfml-main
 						sfml-system
 						sfml-window
-						PUBLIC
-						ImGui-SFML::ImGui-SFML
+						# PUBLIC
+						# ImGui-SFML::ImGui-SFML
 					)
 # target_compile_options(main 
 # 						PRIVATE 

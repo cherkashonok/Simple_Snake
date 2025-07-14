@@ -67,3 +67,5 @@ tools/clang-format.exe
 /linux-crashes
 doc/site/
 *.exe
+*.ttf
+snake_log.txt
