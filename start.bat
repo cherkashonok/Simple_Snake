@@ -12,5 +12,5 @@ cmake ^
 cd tmp
 ninja -j2
 
-move ./main.exe ../app.exe
+move ./main.exe ../snake.exe
 cd ..
