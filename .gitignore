@@ -65,6 +65,6 @@ package/x64
 tools/clang-format.exe
 /linux-crashes
 doc/site/
-*.exe
-*.ttf
+.exe
+.ttf
 snake_log.txt
