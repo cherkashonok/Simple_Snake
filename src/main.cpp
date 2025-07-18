@@ -3,8 +3,8 @@
 
 #include "SFML/Window/Event.hpp"
 #include "SFML/Graphics.hpp"
-// #include "TGUI/TGUI.hpp"
-// #include "TGUI/Backend/SFML-Graphics.hpp"
+#include "TGUI/TGUI.hpp"
+#include "TGUI/Backend/SFML-Graphics.hpp"
 
 #include "Snake.hpp"
 #include "Apple.hpp"
@@ -16,12 +16,14 @@
 int main() 
 {
     srand(time(NULL)); 
+    my_load_font();
 
     sf::RenderWindow window(sf::VideoMode(WINDOW_X_SIZE, WINDOW_Y_SIZE), "Simple Snake");
     uint32_t fps = 4;
     window.setFramerateLimit(fps);
 
-    // tgui::Gui gui{window};
+    tgui::Gui gui{window};
+    GameInterface interface{window, gui};
 
     Counter counter;
     Snake snake{false};
@@ -29,7 +31,7 @@ int main()
 
     // for debug ?
     #ifdef START_INCREASE_SNAKE
-        for(int r=1; r<=10; r++)
+        for(int r=1; r<=5; r++)
             ++snake;
     #endif
     
@@ -39,6 +41,8 @@ int main()
         sf::Event event;
         while (window.pollEvent(event)) 
         {
+            gui.handleEvent(event);
+
             if (event.type == sf::Event::Closed)
                 window.close();
             if (event.type == sf::Event::KeyPressed) 
@@ -51,42 +55,45 @@ int main()
                     snake.up();
                 if (event.text.unicode == sf::Keyboard::Key::Z)
                     snake.down();
+                if (event.text.unicode == sf::Keyboard::Key::Escape)
+                {
+                    interface.set_start_game(false);
+                    interface.enable_gui();
+                }
             }
         }
 
-        window.clear(sf::Color::Black);
 
-
-        if(snake.is_alive()) 
+        
+        if (interface.get_start_game())
         {
-            if (apple.check_snake_in_apple())
+            if(snake.is_alive()) 
             {
-                apple.update();
-                ++counter;
-                ++snake;
-
-                /* it will increase speed*/
-                fps += 1;
-                window.setFramerateLimit(fps);
+                if (apple.check_snake_in_apple())
+                {
+                    apple.update();
+                    ++counter;
+                    ++snake;
+                    
+                    /* it will increase speed*/
+                    fps += 1;
+                    window.setFramerateLimit(fps);
+                }
+                snake.update(); 
+            } 
+            else
+            {
+                interface.end_game();
             }
-            snake.update(); 
-        } 
-        else
-        {
-            sf::Font font = load_font();
-            sf::Text text;
-
-            text.setFont(font);
-            text.setString("GAME OVER");
-            text.setCharacterSize(36);
-
-            window.draw(text);
         }
-
-
+        
+        
+        window.clear(sf::Color::Black);
+        
         snake.draw(window);
         window.draw(counter.get_obj());
         window.draw(apple.get_obj());
+        gui.draw();
 
         window.display();
 

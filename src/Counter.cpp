@@ -9,8 +9,7 @@
 
 Counter::Counter() 
 {
-    font = load_font();
-    this->obj.setFont(font);
+    this->obj.setFont(FONT);
 
     this->count = 0;
     this->obj.setString(std::to_string(0));
