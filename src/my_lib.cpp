@@ -66,16 +66,6 @@ void RectOsnova::set_move_status(move_status external_move_status)
 
 
 /* other functions */
-void my_load_font() 
-{
-    if (!FONT.loadFromFile("my_font.ttf"))
-    {
-        printf("font is not loaded\n");
-        system("pwd");
-        assert(false);
-    }
-}
-
 sf::Vector2f rand_coordinates(int x_limit, int y_limit) 
 {
     sf::Vector2f tmp;

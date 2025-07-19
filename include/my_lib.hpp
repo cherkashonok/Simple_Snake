@@ -10,7 +10,6 @@
 #include "SFML/Graphics/Font.hpp"
 
 
-static sf::Font FONT;
 static const float RECT_SIZE = 16.0f;   // float because of Vector2f
 static const float APPLE_SIZE = 16.0f;  // float because of Vector2f
 static const int WINDOW_X_SIZE = 800;
@@ -47,7 +46,6 @@ private:
 
 
 sf::Vector2f rand_coordinates(int x_limit, int y_limit); 
-void my_load_font();
 void movement(RectOsnova& current);
 void movement_through_walls(RectOsnova& current);
 

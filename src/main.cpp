@@ -16,13 +16,14 @@
 int main() 
 {
     srand(time(NULL)); 
-    my_load_font();
 
     sf::RenderWindow window(sf::VideoMode(WINDOW_X_SIZE, WINDOW_Y_SIZE), "Simple Snake");
     uint32_t fps = 4;
     window.setFramerateLimit(fps);
 
     tgui::Gui gui{window};
+    gui.setFont(tgui::Font("my_font.ttf"));
+    gui.setTextSize(16);
     GameInterface interface{window, gui};
 
     Counter counter;
@@ -59,6 +60,7 @@ int main()
                 {
                     interface.set_start_game(false);
                     interface.enable_gui();
+                    // snake = Snake(false); проблемка
                 }
             }
         }
@@ -89,7 +91,7 @@ int main()
         
         
         window.clear(sf::Color::Black);
-        
+
         snake.draw(window);
         window.draw(counter.get_obj());
         window.draw(apple.get_obj());

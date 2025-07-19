@@ -9,7 +9,14 @@
 
 Counter::Counter() 
 {
-    this->obj.setFont(FONT);
+    if (!font.loadFromFile("my_font.ttf"))
+    {
+        printf("font is not loaded\n");
+        system("pwd");
+        assert(false);
+    }
+
+    this->obj.setFont(font);
 
     this->count = 0;
     this->obj.setString(std::to_string(0));

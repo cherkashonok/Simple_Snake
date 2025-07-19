@@ -16,6 +16,7 @@ public:
 
 private:
     sf::Text obj;
+    sf::Font font;
     int count;
 };
 
