@@ -5,32 +5,29 @@
 #include "TGUI/TGUI.hpp"
 #include "TGUI/Backend/SFML-Graphics.hpp"
 
-
-struct settings 
-{
-    uint32_t speed;
-    bool with_walls;
-};
-
+#include "my_lib.hpp"
+#include "Counter.hpp"
 
 class GameInterface 
 {
 public:
-    GameInterface(sf::RenderWindow& window, tgui::Gui& gui);
+    GameInterface(sf::RenderWindow& window, tgui::Gui& gui, Counter& counter);
 
-    void enable_gui();
-    void disable_gui();
+    void draw_gui();
+    void hide_gui();
+    void draw_settings();
+    void hide_settings();
+    void draw_end_game();    
     
-    void end_game();   
-    // void settings();  // ?
-    
-    // settings intialize_settings(); // ?
+    settings& get_settings(); 
     bool get_start_game();
     void set_start_game(bool val);
 
 private:
     sf::RenderWindow& window; 
     tgui::Gui& gui;
+    Counter& counter;
+    settings s;
 
     // true -  show play
     // false - show continue

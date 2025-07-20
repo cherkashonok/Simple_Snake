@@ -18,6 +18,17 @@ static const int WINDOW_Y_SIZE = 600;
 enum move_status {UP=1, DOWN, LEFT, RIGHT};
 enum speed {LOW, MEDIUM, HIGH};
 
+// 0.5 - low speed
+// 1.0   - medium spped
+// 2.0 - high speed
+struct settings 
+{
+    float speed;
+    bool with_walls;
+
+    settings() : speed(1), with_walls(false) {}
+};
+
 
 class RectOsnova 
 {

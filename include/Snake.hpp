@@ -20,7 +20,7 @@ class Snake
 {
 
 public:
-    Snake(bool with_walls);
+    Snake(settings& sett);
     ~Snake();
     void log_snake();
 
@@ -46,7 +46,7 @@ private:
     std::ofstream file;
     uint64_t count_logs;
 
-    bool with_walls;
+    settings& s;
 };
 
 
