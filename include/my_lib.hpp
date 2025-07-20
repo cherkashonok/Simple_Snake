@@ -1,11 +1,6 @@
 #ifndef MY_LIB_HPP
 #define MY_LIB_HPP
 
-#define RECT_SIZE 16.0f
-#define APPLE_SIZE 16.0f
-#define WINDOW_X_SIZE 800
-#define WINDOW_Y_SIZE 600
-
 // #define START_INCREASE_SNAKE
 // #define EXPLOSIVE
 
@@ -15,12 +10,28 @@
 #include "SFML/Graphics/Font.hpp"
 
 
+static const float RECT_SIZE = 16.0f;   // float because of Vector2f
+static const float APPLE_SIZE = 16.0f;  // float because of Vector2f
+static const int WINDOW_X_SIZE = 800;
+static const int WINDOW_Y_SIZE = 600;
+
 enum move_status {UP=1, DOWN, LEFT, RIGHT};
 enum speed {LOW, MEDIUM, HIGH};
 
+// 0.5 - low speed
+// 1.0   - medium spped
+// 2.0 - high speed
+struct settings 
+{
+    float speed;
+    bool with_walls;
+
+    settings() : speed(1), with_walls(false) {}
+};
+
+
 class RectOsnova 
 {
-
 public:
     RectOsnova(RectOsnova *obj); 
     RectOsnova();
@@ -42,11 +53,10 @@ public:
 private:
     sf::RectangleShape obj;
     move_status status;
-    
 };
 
+
 sf::Vector2f rand_coordinates(int x_limit, int y_limit); 
-sf::Font load_font();
 void movement(RectOsnova& current);
 void movement_through_walls(RectOsnova& current);
 

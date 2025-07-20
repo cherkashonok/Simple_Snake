@@ -6,7 +6,7 @@
 #include "my_lib.hpp"
 
 
-Apple::Apple(Snake& snake) : snake(snake) 
+Apple::Apple(std::shared_ptr<Snake>& snake) : snake(snake) 
 {
     obj.setSize({APPLE_SIZE, APPLE_SIZE});
     obj.setFillColor(sf::Color::Red);
@@ -16,7 +16,7 @@ Apple::Apple(Snake& snake) : snake(snake)
 void Apple::update()
 {
     auto tmp = rand_coordinates(WINDOW_X_SIZE - APPLE_SIZE, WINDOW_Y_SIZE - APPLE_SIZE);
-    auto snake_koor = snake.get_snake(true);
+    auto snake_koor = snake->get_snake(true);
     int status = 0;
 
     for(auto& el : snake_koor) 
@@ -40,7 +40,7 @@ void Apple::update()
 
 bool Apple::check_snake_in_apple() 
 {
-    auto snake_k = snake.get_lead_rect().get_position();
+    auto snake_k = snake->get_lead_rect().get_position();
     auto apple_k = obj.getPosition();
 
     // условие существования по x

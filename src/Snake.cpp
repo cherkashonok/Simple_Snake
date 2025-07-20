@@ -11,7 +11,7 @@
 #include "my_lib.hpp"
 
 
-Snake::Snake(bool walls) : count_logs(1), with_walls(walls)
+Snake::Snake(settings& sett) : count_logs(1), s(sett)
 {
     file.open("snake_log.txt", std::ios::out | std::ios::trunc);
 
@@ -62,7 +62,7 @@ std::unordered_set<sf::Vector2f, hash_Vector2f, equal_to_Vector2f> Snake::get_sn
 
 void Snake::update()
 {
-    if (!with_walls)
+    if (!s.with_walls)
     {
         for(auto it = snake.begin(); it != snake.end(); it++) 
             movement_through_walls(*it);
@@ -94,14 +94,14 @@ void Snake::draw(sf::RenderWindow& window)
 bool Snake::is_alive()
 {
     auto tmp = get_lead_rect().get_position();
-    if (with_walls && (tmp.x < 0 || tmp.y < 0))
+    if (s.with_walls && (tmp.x < 0 || tmp.y < 0))
     {
         #ifdef EXPLOSIVE
             throw std::exception("107 line Snake.cpp");
         #endif
         return false;
     }
-    else if (with_walls)
+    else if (s.with_walls)
     {
         bool usl_x = tmp.x > WINDOW_X_SIZE - RECT_SIZE;
         bool usl_y = tmp.y > WINDOW_Y_SIZE - RECT_SIZE;
