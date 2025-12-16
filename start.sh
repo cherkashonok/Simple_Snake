@@ -1,2 +1,15 @@
 #/bin/bash
 
+mkdir -p ./tmp
+cmake \
+    -S . \
+    -B tmp \
+    -DCMAKE_BUILD_TYPE=Debug \
+    -DCMAKE_CXX_COMPILER=g++ \
+    -G Ninja 
+
+cd tmp
+ninja -j2
+
+mv ./main ../snake
+cd ..
