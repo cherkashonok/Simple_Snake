@@ -1,5 +1,10 @@
 ﻿#! base
 cmake_minimum_required(VERSION "${CMAKE_MINIMUM_REQUIRED_VERSION}")
+
+if(LINUX)
+	cmake_policy(SET CMP0048 NEW)
+endif(Linux)
+
 project("game_for_school(SFML)"
 			VERSION "1.2.0"
     		LANGUAGES "CXX"
@@ -44,11 +49,13 @@ target_link_libraries(
 	main 				
 	PRIVATE 
 	sfml-graphics
-	sfml-main
 	sfml-system
 	sfml-window
 	TGUI::TGUI
 )
+if(WIN32)
+	target_link_libraries(main PRIVATE sfml-main)
+endif(WIN32)
 # target_compile_options(main 
 # 						PRIVATE 
 # 						"/SUBSYSTEM:WINDOWS" 
